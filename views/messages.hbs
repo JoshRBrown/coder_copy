@@ -1,0 +1,45 @@
+<div class="app-profile-header">Messages</div>
+
+
+
+<div class="app-flex-center app-margin-top app-margin-left">
+    <a href="/messages/new"><button class="app-button-2 app-margin-right">New</button></a>
+    <input class="app-button-3 app-margin-right is-hidden" type="button" name="box-type" value="Inbox" data-box-button data-display>
+    <input class="app-button-3 app-margin-right" type="button" name="box-type" value="Outbox" data-box-button data-display>
+</div>
+
+<div data-display>
+    <div class="app-profile-header">Inbox</div>
+    {{#each messages.received}}
+        <div class="app-message-container">
+            <i class="app-message-icon far fa-envelope-open"></i>
+            <div class="app-message app-flex-column">
+                <div class="app-message-info">
+                    @ {{this.date_time}}, {{this.sender_alias}} said
+                </div>
+                <div>
+                    {{this.message_text}}
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div data-display class="is-hidden">
+    <div class="app-profile-header">Outbox</div>
+    {{#each messages.sent}}
+        <div class="app-message-container">
+            <i class="app-message-icon far fa-envelope"></i>
+            <div class="app-message app-flex-column">
+                <div class="app-message-info">
+                    @ {{this.date_time}}, {{this.sender_alias}} said
+                </div>
+                <div>
+                    {{this.message_text}}
+                </div>
+            </div>
+        </div> 
+    {{/each}}
+</div>
+
+<script src="/js/messages.js"></script>

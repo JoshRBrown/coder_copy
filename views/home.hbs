@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="/stylesheets/home.css">
+
+<div class="app-background">
+    <div class="app-profile-header">
+        {{#if isSearchResults}}
+            <div class="app-flex-center app-margin-bottom">
+                <a href="/search"><button class="app-button-2">Search</button></a>
+                <a href="/home"><button class="app-button-3 app-margin-left">Clear</button></a>
+            </div>
+            <div>Search Results</div>
+        {{else}}
+            <div><i class="fas fa-heart app-margin-right-small app-pink"></i>Highlighted Users</div>
+        {{/if}}
+    </div>
+    {{#if isSearchResults}}
+        {{#if error}}
+        <div class="notification is-warning">
+        {{error}}
+        </div>
+        {{/if}}
+    {{/if}}
+
+    {{#each data}}
+<div class="page-container">
+
+    <div class="profile-container">
+        <img class="app-avatar" src="{{github_avatar_url}}">
+        {{#if name}}
+        <div class="profile-info">
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <div data-display>{{name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        {{#if city}}
+            <div class="field is-horizontal">
+                <div class="field-label">
+                    <label class="label">Location</label>
+                </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div data-display>{{city}}, {{state}}</div>
+                                <input class="input is-hidden is-expanded" type="text" value="{{city}}" data-display></label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <div class="select is-hidden" data-display>
+                                    <select name="state">
+                                        <option>State</option>
+                                        <option value="AL">AL</option>
+                                        <option value="AK">AK</option>
+                                        <option value="AS">AS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-hidden" type="text" value="{{zip}}" placeholder="Zip..." data-display></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                {{#if employer}}
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <label class="label">Employer</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div data-display>{{employer}}</div>
+                                <input class="input is-hidden" type="text" value="{{employer}}" data-display></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <label class="label">GitHub Alias</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div data-display>{{alias}}</div>
+                                <input class="input is-hidden" type="text" value="{{alias}}" data-display></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <label class="label">Member since</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div>{{join_date}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/profile/{{user_id}}">
+                    <button class="app-button">
+                        More
+                    </button>
+                </a>
+        </div>
+    </div>
+</div>    
+
+    {{/each}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{#unless isSearchResults}}
+    <script src="/js/browse.js"></script>
+    {{!-- <div class="app-profile-footer"> --}}
+        {{!-- <button class="inline button reload-button" type="input"><i class="fas fa-sync"></i></button> --}}
+    {{!-- </div> --}}
+    {{/unless}}
+
+    {{#if isSearchResults}}
+    <div class="sidebutton">
+            {{!-- <button type="button" class="button load inline"><i class="fas fa-sync"></i></button> --}}
+            <a href="#"><button type="button" value="Top" class="button inline hide reload"><i class="fas fa-angle-up"></i></button></a>
+    </div>
+    <script src="/js/search.js"></script> 
+    {{/if}}
+</div>
+
+

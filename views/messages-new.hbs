@@ -1,0 +1,36 @@
+{{!-- <h1><strong>This is the logged in new messages page.</strong></h1>--}}
+
+<div class="app-margin">
+    <a href="/messages">
+        <button class="app-button-2">
+            <i class="fas fa-caret-left app-back"></i>
+            Messages
+        </button>
+    </a>
+
+    <form method="POST" action="/messages/new">
+        <div class="app-margin-top">
+            <label class="label" for="">Recipients:</label>
+            <div class="app-sub-text">(Use recipients' github_ids. For multiple recipients, separate ids with a comma and space, such as 'user1, user2, user3'.)</div>
+            <input class="input app-margin-top-small" type="text" name="recipients">
+
+            <label class="label app-margin-top"  for="">Message:</label>
+            <textarea class="textarea" rows="2" cols="25" placeholder="Send a sweet message..." name="message"></textarea><br>
+            <div class="app-flex-center">
+                <input class="app-button-2 app-margin-right" type="submit">
+                <input class="app-button-3" type="reset">
+            </div>
+            <input type="hidden" name="user_id" value={{this.user_id}}>
+        </div>
+    </form> 
+
+    {{#if this.justSentMessage}}
+        <div class="app-profile-header">Message Sent Successfully!</div>
+    {{/if}}
+
+    {{#if this.messageFailed}}
+        <div class="app-profile-header">Message Failed To Send..</div>
+    {{/if}}
+</div>
+
+{{!-- <h1>user_id: {{this.user_id</h1> --}}
